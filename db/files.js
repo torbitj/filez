@@ -18,6 +18,5 @@ export const getAllFiles = async () => {
   `;
 
   const { rows: files } = await db.query(sql)
-  console.log(files)
   return files;
 }
