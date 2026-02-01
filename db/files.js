@@ -10,3 +10,13 @@ export const createFile = async (name, folderId) => {
   const { rows: [file] } = await db.query(sql, [name, size, folderId]);
   return file;
 }
+
+export const getAllFiles = async () => {
+  const sql = `
+    SELECT files.*, folders.name AS "folder_name" FROM files
+    JOIN folders ON folders.id = files.folder_id
+  `;
+
+  const { rows: files } = await db.query(sql)
+  return files;
+}
