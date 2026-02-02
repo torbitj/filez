@@ -11,7 +11,8 @@ async function seed() {
   for (let folderCount = 1; folderCount <= 3; folderCount++) {
     const newFolder = await createFolder(`folder${folderCount}`);
     for (let fileCount = 1; fileCount <= 7; fileCount++) {
-      await createFile(`file${fileCount}`, newFolder.id)
+      const newFile = {name: `file${fileCount}`, folderId: newFolder.id}
+      await createFile(newFile)
     }
   }
 }
